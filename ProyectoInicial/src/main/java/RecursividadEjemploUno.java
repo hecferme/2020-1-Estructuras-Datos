@@ -10,24 +10,56 @@
  */
 public class RecursividadEjemploUno {
     
-    private void CapturarString(){
-    
+    private String CapturarString(){
+        String laHilera = "Hello world";
+        return (laHilera);     
     }
     
-    private void ImprimirDeDerechaAIzquierda()
+    private int LargoDeLaHilera (String laHilera)
     {
+        return laHilera.length();
+    }
+    
+    private void ImprimirDeDerechaAIzquierda(
+            String laHilera, int elLargoDeLaHilera)
+    {
+        ImprimirRecursivo(laHilera, 0, 
+                elLargoDeLaHilera - 1);
             }
     
-    private void ImprimirRecursivo ()
+    private void ImprimirRecursivo (
+            String laHilera, int laPosicionActual, 
+            int elLargoDeLaHilera)
     {
+        if (laPosicionActual == elLargoDeLaHilera)
+        {
+            ImprimirCaracter (laHilera, 
+                    laPosicionActual);
+        }
+        else
+        {
+            ImprimirRecursivo(laHilera, 
+                    laPosicionActual + 1, 
+                    elLargoDeLaHilera);
+            ImprimirCaracter(laHilera, 
+                    laPosicionActual);
+        }
         
     }
     
     public void EjecutarEjemploUno ()
     {
-        CapturarString ();
-        ImprimirDeDerechaAIzquierda ();
+        String laHilera = CapturarString ();
+        int elLargoDeLaHilera = LargoDeLaHilera
+                    (laHilera);
+        ImprimirDeDerechaAIzquierda (laHilera, 
+                elLargoDeLaHilera);
         
+    }
+
+    private void ImprimirCaracter(String laHilera, int laPosicionActual) {
+        System.out.print(
+                laHilera.charAt(laPosicionActual));
     }
 
 }
