@@ -10,12 +10,13 @@ package Pilas;
  * @author LAB01
  */
 public class Dato {
-    private int valor;
-    private Dato abajo;
+    public int valor;
+    public Dato abajo;
     
     public Dato ()
     {
-        
+        this.valor = 0;
+        this.abajo = null;
     }
     public Dato (int elValor)
     {
