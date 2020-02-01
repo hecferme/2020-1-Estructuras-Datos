@@ -46,4 +46,25 @@ public class Pila {
        }
        return (elElementoParaDevolver);
      }
+    
+    public void ImprimirPila()
+    {
+        ImprimirPilaRecursivo(top);
+    }
+    
+    private void ImprimirPilaRecursivo (Dato elDato)
+    {
+       if (elDato != null)
+       {
+            ImprimirElemento (elDato);
+            ImprimirPilaRecursivo(elDato.abajo);
+        }
+       
+    }
+    
+    private void ImprimirElemento(Dato elDato) 
+    {
+        System.out.println(elDato.valor);
+    }
+
 }

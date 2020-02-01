@@ -56,5 +56,8 @@ public class Rutinas
         this.Push(14);
         this.Push(-645);
         this.Push(-200);
+        this.laPila.ImprimirPila();
     }
+    
+
 }
