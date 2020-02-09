@@ -21,11 +21,13 @@ public class RecursividadEjemploUno {
     }
     
     private void ImprimirDeDerechaAIzquierda(
-            String laHilera, int elLargoDeLaHilera)
+            String laHilera, int elLargoDeLaHilera, int versionDelAlgoritmo)
     {
-        ImprimirRecursivo(laHilera, 0, 
-                elLargoDeLaHilera - 1);
-            }
+        if (versionDelAlgoritmo == 0)
+            ImprimirRecursivo(laHilera, 0, elLargoDeLaHilera - 1);
+        else
+            ImprimirRecursivoVersionDos(laHilera, 0, elLargoDeLaHilera - 1);
+    }
     
     private void ImprimirRecursivo (
             String laHilera, int laPosicionActual, 
@@ -46,14 +48,29 @@ public class RecursividadEjemploUno {
         }
         
     }
+
+    private void ImprimirRecursivoVersionDos (
+            String laHilera, int laPosicionActual, 
+            int elLargoDeLaHilera)
+    {
+        if (laPosicionActual != elLargoDeLaHilera)
+        {
+            ImprimirRecursivo(laHilera, 
+                    laPosicionActual + 1, 
+                    elLargoDeLaHilera);
+        }
+        ImprimirCaracter (laHilera, 
+                laPosicionActual);
+    }
     
     public void EjecutarEjemploUno ()
     {
         String laHilera = CapturarString ();
         int elLargoDeLaHilera = LargoDeLaHilera
                     (laHilera);
+        int laVersionDelAlgoritmo = 1;
         ImprimirDeDerechaAIzquierda (laHilera, 
-                elLargoDeLaHilera);
+                elLargoDeLaHilera, laVersionDelAlgoritmo);
         
     }
 
