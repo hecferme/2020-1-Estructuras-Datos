@@ -21,13 +21,13 @@ static Node start;
 // Structure of a Node  
 static class Node  
 {  
-    int data;  
+    Integer data;  
     Node next;  
     Node prev;  
 };  
   
 // Function to insert at the end  
-static void insertEnd(int value)  
+static void insertEnd(Integer value)  
 {  
     // If the list is empty, create a single node  
     // circular and doubly list  
@@ -64,7 +64,7 @@ static void insertEnd(int value)
   
 // Function to insert Node at the beginning  
 // of the List,  
-static void insertBegin(int value)  
+static void insertBegin(Integer value)  
 {  
     // Pointer points to last Node  
     Node last = (start).prev;  
@@ -87,8 +87,8 @@ static void insertBegin(int value)
 // Function to insert node with value as value1.  
 // The new node is inserted after the node with  
 // with value2  
-static void insertAfter(int value1,  
-                                    int value2)  
+static void insertAfter(Integer value1,  
+                                    Integer value2)  
 {  
     Node new_node = new Node();  
     new_node.data = value1; // Inserting the data  
@@ -105,6 +105,21 @@ static void insertAfter(int value1,
     new_node.next = next;  
     next.prev = new_node;  
 }  
+public static String toStringAlDerecho (Character elSeparador)
+{
+    String elResultado = "";
+    Node temp = start;  
+    while (temp.next != start)
+    {
+        elResultado += temp.data.toString()
+            + elSeparador.toString();  
+        temp = temp.next;
+    }
+    elResultado = elResultado.concat(temp.data.toString()
+        ).concat(elSeparador.toString());  
+   
+    return elResultado;
+}
   
 static void display()  
 {  
@@ -155,7 +170,9 @@ public static void main(String[] args)
     insertAfter(6, 5);  
   
     System.out.printf("Created circular doubly linked list is: ");  
-    display();  
+    display();
+    System.out.printf(toStringAlDerecho(' '));
+    //.toStringAlReves(char elSeparador)
 }  
 }  
   
