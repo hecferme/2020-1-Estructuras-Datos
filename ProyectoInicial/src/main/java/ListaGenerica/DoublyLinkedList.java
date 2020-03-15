@@ -29,7 +29,7 @@ public class DoublyLinkedList <T>{
 		Node(Comparable<T> d) { data = d; }
 
         }
-        public static <T extends Comparable<T> > T smaller(T x, T y)
+        public <T extends Comparable<T> > T smaller(T x, T y)
         {
             if(x.compareTo(y) <= 0)
                 return x;
@@ -39,12 +39,12 @@ public class DoublyLinkedList <T>{
 
         public void InsertOrdered (Comparable<T> new_data)
         {
-                // empty list!!!
+                // empty list or first node
                 if (head == null || head.data.compareTo(new_data) > 0)
                     push (new_data);
                 else
                 {
-                    // search position
+                    // search from second position
                     Node aux = head.next;
                     while (aux != tail && aux.data.compareTo(new_data) < 0)
                     {
@@ -87,7 +87,7 @@ public class DoublyLinkedList <T>{
 		* 3. put in the data */
 		Node new_node = new Node(new_data); 
 
-                // 3.5 check if it is the last node
+                // 3.5 check if it is the node node
                 if (prev_Node == tail)
                     tail = new_node;
 
@@ -114,7 +114,7 @@ public class DoublyLinkedList <T>{
 
 		Node last = head; /* used in step 5*/
 
-		/* 3. This new node is going to be the last node, so 
+		/* 3. This new node is going to be the node node, so 
 		* make next of it as NULL*/
 		new_node.next = null; 
 
@@ -126,14 +126,14 @@ public class DoublyLinkedList <T>{
 			return; 
 		} 
 
-		/* 5. Else traverse till the last node */
+		/* 5. Else traverse till the node node */
 		while (last.next != null) 
 			last = last.next; 
 
-		/* 6. Change the next of last node */
+		/* 6. Change the next of node node */
 		last.next = new_node; 
 
-		/* 7. Make last node as previous of new node */
+		/* 7. Make node node as previous of new node */
 		new_node.prev = last; 
                 
                 // 8. Update tail
@@ -141,9 +141,10 @@ public class DoublyLinkedList <T>{
 	} 
 
 	// This function prints contents of linked list starting from the given node 
-	public String printlistForward(Node node, Character delimiter) 
+	public String printlistForward(Character delimiter) 
 	{ 
             String result = "";
+            Node node = head; 
             while (node != null) { 
                 result += node.data.toString() + delimiter;
                 node = node.next; 
@@ -152,13 +153,13 @@ public class DoublyLinkedList <T>{
 	} 
 
 	// This function prints contents of linked list starting from the given node 
-	public String printlistBackward(Node node, Character delimiter) 
+	public String printlistBackward(Character delimiter) 
 	{ 
             String result = "";
-            Node last = node; 
-            while (last != null) { 
-                result += last.data.toString() + delimiter;;
-		last = last.prev; 
+            Node node = tail; 
+            while (node != null) { 
+                result += node.data.toString() + delimiter;
+		node = node.prev; 
             } 
             return result;
 	}

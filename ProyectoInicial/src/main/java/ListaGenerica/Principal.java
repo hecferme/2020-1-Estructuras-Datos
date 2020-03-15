@@ -36,9 +36,9 @@ public class Principal {
 		System.out.println("Created DLL is: "); 
                 
                 System.out.println("Traversal in forward direction: " + 
-                    dll.printlistForward(dll.head, ' ')); 
+                    dll.printlistForward(' ')); 
                 System.out.println("Traversal in backward direction: " +  
-                    dll.printlistBackward(dll.tail, ' '));        
+                    dll.printlistBackward(' '));        
     }
     
         public static void procesarNodo()
@@ -64,9 +64,9 @@ public class Principal {
 		System.out.println("Created DLL is: "); 
                 
                 System.out.println("Traversal in forward direction: " + 
-                    dll.printlistForward(dll.head, ' ')); 
+                    dll.printlistForward(' ')); 
                 System.out.println("Traversal in backward direction: " +  
-                    dll.printlistBackward(dll.tail, ' '));        
+                    dll.printlistBackward(' '));        
     }
     
 	/* Drier program to test above functions*/
