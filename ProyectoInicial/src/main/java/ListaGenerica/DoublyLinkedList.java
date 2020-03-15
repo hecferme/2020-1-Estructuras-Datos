@@ -13,25 +13,49 @@ public class DoublyLinkedList <T>{
     //Taken from https://www.geeksforgeeks.org/doubly-linked-list/
     // A complete working Java program to demonstrate all 
 
-	Node head; // head of list 
-        Node tail; // tail of the list
+	Node  head; // head of list 
+        Node  tail; // tail of the list
 
 	/* Doubly Linked list Node*/
 	//abstract 
-                class Node <R> 
-                        //implements Comparable <R>
+        class Node < T extends Comparable<T>>
                 { 
-		R data; 
+		Comparable<T> data; 
 		Node prev; 
 		Node next; 
 
 		// Constructor to create a new node 
 		// next and prev is by default initialized as null 
-		Node(R d) { data = d; }
+		Node(Comparable<T> d) { data = d; }
+
         }
-                
+        public static <T extends Comparable<T> > T smaller(T x, T y)
+        {
+            if(x.compareTo(y) <= 0)
+                return x;
+            else
+                return y;
+        }    
+
+        public void InsertOrdered (Comparable<T> new_data)
+        {
+                // empty list!!!
+                if (head == null || head.data.compareTo(new_data) > 0)
+                    push (new_data);
+                else
+                {
+                    // search position
+                    Node aux = head.next;
+                    while (aux != tail && aux.data.compareTo(new_data) < 0)
+                    {
+                        aux = aux.next;
+                    }
+                    InsertAfter(aux, new_data);
+                }            
+        }
+        
 	// Adding a node at the front of the list 
-	public void push(T new_data) 
+	public void push(Comparable<T> new_data) 
 	{ 
 		/* 1. allocate node 
 		* 2. put in the data */
@@ -51,29 +75,8 @@ public class DoublyLinkedList <T>{
 		/* 5. move the head to point to the new node */
 		head = new_Node; 
 	} 
-
-        public void InsertOrdered (T new_data)
-        {
-                // empty list!!!
-                if (head == null)
-                    push (new_data);
-                else
-                {
-                    /* 2. allocate node 
-                    * 3. put in the data */
-                    //Node new_node = new Node(new_data); 
-                    
-                    // search position
-                    Node aux = head;
-                    //while (aux != tail && new_node.data.compareTo())
-                
-
-                }
-            
-        }
-        
 	/* Given a node as prev_node, insert a new node after the given node */
-	public void InsertAfter(Node prev_Node, T new_data) throws NullPointerException
+	public void InsertAfter(Node prev_Node, Comparable<T> new_data) throws NullPointerException
 	{ 
 		/*1. check if the given prev_node is NULL */
 		if (prev_Node == null) { 
@@ -103,7 +106,7 @@ public class DoublyLinkedList <T>{
 	} 
 
 	// Add a node at the end of the list 
-	public void append(T new_data) 
+	public void append(Comparable<T> new_data) 
 	{ 
 		/* 1. allocate node 
 		* 2. put in the data */

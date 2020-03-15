@@ -13,25 +13,42 @@ import java.util.Date;
  */
 public class Nodo implements Comparable<Nodo>
 {
+    private int ordenamientoId = 0;
+    private int ordenamientoNombre = 1;
     Integer id;
     String nombre;
     Date fechaNacimiento;
+    private Integer criterioOrdenamiento = ordenamientoNombre;
     @Override public String toString ()
     {
-        String elResultado = String.format("Id:[{0}] - Nombre:[{1}] - Fecha de nacimiento:[{2}]", 
+        String elResultado = String.format("Id:[%s] - Nombre:[%s] - Fecha de nacimiento:[%s]", 
                 this.id.toString(), this.nombre, this.fechaNacimiento.toString());
         return elResultado;
     }
     
+    private int compareToNombre(Nodo nodo)
+                {
+                int resultado = nombre.compareTo(nodo.nombre);
+                return resultado;
+            }
+
+    private int compareToId(Nodo nodo)
+                {
+                int resultado = id.compareTo(nodo.id);
+                return resultado;
+            }
+
+    
     @Override public int compareTo(Nodo nodo)
             {
                 int resultado = 0;
-                if (this.id < nodo.id)
-                    resultado = -1;
-                else if (this.id > nodo.id)
-                    resultado = 1;
+                if (criterioOrdenamiento == ordenamientoId)
+                    resultado = compareToId(nodo);
+                if (criterioOrdenamiento == ordenamientoNombre)
+                    resultado = compareToNombre(nodo);
                 return resultado;
             }
+    
     public Nodo ()
     {
         
