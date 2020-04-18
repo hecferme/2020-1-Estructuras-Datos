@@ -120,6 +120,22 @@ public class TreeImplementation < T extends Comparable<T>>
             return (findSmallestValue(root.getLeft()));
     }
     
+    public String getMenor () {
+        String elResultado = "";
+        if (root != null)
+            elResultado = getMenor (root); 
+        else
+            elResultado = "";
+        return elResultado;
+    }
+    
+    private String getMenor (Node root) {
+        if (root.getLeft() == null)
+            return (root.getData().toString());
+        else
+            return (getMenor(root.getLeft()));
+    }
+    
     public String inOrderTraversal(Character delimiter) {
         return inOrderTraversal(root, delimiter);
     }
