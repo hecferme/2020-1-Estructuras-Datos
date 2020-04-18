@@ -19,10 +19,24 @@ public class Nodo implements Comparable<Nodo>
     String nombre;
     Date fechaNacimiento;
     private Integer criterioOrdenamiento = ordenamientoNombre;
-    @Override public String toString ()
+    
+    private String toStringSinFechaDeNacimiento ()
+    {
+        String elResultado = String.format("Id:[%s] - Nombre:[%s]", 
+                this.id.toString(), this.nombre);
+        return elResultado;
+    }
+    
+        private String toStringConFechaDeNacimiento ()
     {
         String elResultado = String.format("Id:[%s] - Nombre:[%s] - Fecha de nacimiento:[%s]", 
                 this.id.toString(), this.nombre, this.fechaNacimiento.toString());
+        return elResultado;
+    }
+        
+    @Override public String toString ()
+    {
+        String elResultado = toStringSinFechaDeNacimiento();
         return elResultado;
     }
     

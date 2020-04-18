@@ -37,6 +37,8 @@ public class Principal {
             tree.inOrderTraversal(' '));     
         System.out.println("Traversal in post-order direction: " + 
             tree.postOrderTraversal(' ')); 
+        System.out.println("The minimun node is : " + 
+            tree.getMenor()); 
     }
     
     public static void procesarNodo()
@@ -45,7 +47,7 @@ public class Principal {
         var tree = new TreeImplementation<Nodo>(); 
 
         tree.add(new Nodo(68, "Puriscal", new Date()));
-        tree.add(new Nodo(60, "Héctor", new Date()));
+        tree.add(new Nodo(90, "Héctor", new Date()));
         tree.add(new Nodo(68, "Moravia", new Date()));
         tree.add(new Nodo(44, "Fernandez", new Date()));
         tree.add(new Nodo(53, "Mendez", new Date()));
